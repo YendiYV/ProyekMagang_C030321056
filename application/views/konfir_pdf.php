@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Surat Cuti</title>
+    <title>Konfirmasi Cuti</title>
 </head>
 
 <body>
@@ -73,35 +73,27 @@ $id_status_cuti3 = $i['id_status_cuti3'];
     <p style="margin-top:0pt; margin-bottom:0pt; line-height:150%;"><span
             style="font-family:'Times New Roman';">&nbsp;</span></p>
 
-        <p style="margin-top:0pt;margin-left:340pt; margin-bottom:0pt; text-align:justify; line-height:150%;"><span
-            style="font-family:'Times New Roman';">Banjarbaru, <?= tgl_indo($tgl_diajukan)?></span>
-    </p>
+        <p style="margin-top:0pt;margin-left:340pt; margin-bottom:0pt; text-align:justify; line-height:150%;">
+                <span style="font-family:'Times New Roman';">Banjarbaru, <?= date("d-m-Y") ?></span>
+        </p>
+
     <p style="margin-top:0pt; margin-left:300pt; margin-bottom:0pt; text-indent:36pt; text-align:justify; line-height:150%;">
-        <span style="font-family:'Times New Roman';">Yth. Manajer PLN Cabang KSKT</span><br><span
+        <span style="font-family:'Times New Roman';">Yth. Operator <?=$nama_lengkap?></span><br><span
             style="font-family:'Times New Roman';">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Di-Banjarbaru</span>
     </p>
     <p style="margin-top:0pt; margin-bottom:0pt; text-align:justify; line-height:150%;"><span
             style="font-family:'Times New Roman';">Nomor</span><span
             style="width:4.84pt; display:inline-block;">&nbsp;</span><span
             style="width:36pt; display:inline-block;">&nbsp;</span><span style="font-family:'Times New Roman';">: &nbsp;<?=$id_cuti?></span></p>
-    <p style="margin-top:0pt; margin-bottom:0pt; text-align:justify; line-height:150%;"><span
+    <p style="margin-top:0pt; margin-bottom:0pt; text-align:justi       fy; line-height:150%;"><span
             style="font-family:'Times New Roman';">Perihal</span><span
             style="width:4.84pt; display:inline-block;">&nbsp;</span><span
             style="width:36pt; display:inline-block;">&nbsp;</span><span style="font-family:'Times New Roman';">:
-            &nbsp;Pengajuan Cuti</span><span style="width:22.14pt; display:inline-block;">&nbsp;</span><span
+            &nbsp;Konfirmasi Cuti</span><span style="width:22.14pt; display:inline-block;">&nbsp;</span><span
             style="width:36pt; display:inline-block;">&nbsp;</span><span
             style="width:36pt; display:inline-block;">&nbsp;</span><span
             style="width:36pt; display:inline-block;">&nbsp;&nbsp; &nbsp; &nbsp; &nbsp;&nbsp;&nbsp;&nbsp;</span></p>
-    <p
-        style="margin-top:0pt; margin-left:36pt; margin-bottom:0pt; text-indent:36pt; text-align:justify; line-height:150%;">
-        <span style="font-family:'Times New Roman';">&nbsp;&nbsp;</span><span
-            style="font-family:'Times New Roman';"> Karena <?=$perihal_cuti?></span><span
-            style="width:1.09pt; text-indent:0pt; display:inline-block;">&nbsp;</span><span
-            style="width:36pt; text-indent:0pt; display:inline-block;">&nbsp;</span><span
-            style="width:36pt; text-indent:0pt; display:inline-block;">&nbsp;</span><span
-            style="width:36pt; text-indent:0pt; display:inline-block;">&nbsp;</span><span
-            style="width:36pt; text-indent:0pt; display:inline-block;">&nbsp;</span>
-    </p>
+
     <p style="margin-top:0pt; margin-bottom:0pt; text-align:justify; line-height:150%;"><span
             style="width:36pt; display:inline-block;">&nbsp;</span><span
             style="width:36pt; display:inline-block;">&nbsp;</span><span
@@ -128,13 +120,8 @@ $id_status_cuti3 = $i['id_status_cuti3'];
             style="font-family:'Times New Roman';">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
     </p>
     <p style="margin-top:0pt;margin-left:30pt;  margin-bottom:0pt; text-align:justify; line-height:150%;"><span
-            style="font-family:'Times New Roman';">Dengan Hormat</span><span
-            style="width:4.84pt; display:inline-block;">&nbsp;</span><span
-            style="width:36pt; display:inline-block;">&nbsp;</span><span style="font-family:'Times New Roman';"><br>
-            Saya yang bertanda tangan di bawah ini,<br></span><span style="width:22.14pt; display:inline-block;">&nbsp;</span><span
-            style="width:36pt; display:inline-block;">&nbsp;</span><span
-            style="width:36pt; display:inline-block;">&nbsp;</span><span
-            style="width:36pt; display:inline-block;">&nbsp;&nbsp; &nbsp; &nbsp; &nbsp;&nbsp;&nbsp;&nbsp;<br></span></p>
+            style="font-family:'Times New Roman';"> Dengan ini,kami konfirmasikan bahwa permohonan cuti Anda telah disetujui. Berikut adalah detail cuti Anda:</span><span
+            style="width:4.84pt; display:inline-block;">&nbsp;</span></p>
     <p style="margin-top:0pt; margin-bottom:0pt; line-height:150%;"><span
             style="width:36pt; display:inline-block;">&nbsp;</span><span
             style="width:36pt; display:inline-block;">&nbsp;</span><span
@@ -153,48 +140,40 @@ $id_status_cuti3 = $i['id_status_cuti3'];
             style="width:36pt; display:inline-block;">&nbsp;</span><span
             style="width:36pt; display:inline-block;">&nbsp;</span><span style="font-family:'Times New Roman';">:
             <?=$nip?></span></p>
-    <p style="margin-top:0pt; margin-bottom:0pt; line-height:150%;"><span
+            <p style="margin-top:0pt; margin-bottom:0pt; line-height:150%;"><span
+                style="width:36pt; display:inline-block;">&nbsp;</span><span
+                style="width:36pt; display:inline-block;">&nbsp;</span><span
+                style="width:36pt; display:inline-block;">&nbsp;</span><span
+                style="font-family:'Times New Roman';">&nbsp;Mulai Tanggal</span><span
+                style="width:36pt; display:inline-block;">&nbsp;</span><span style="font-family:'Times New Roman';">:
+                <?php
+                // Ubah format tanggal mulai ke "dd-mm-yyyy"
+                $tanggalMulaiFormatted = date("d-m-Y", strtotime($mulai));
+                echo $tanggalMulaiFormatted;
+                ?>
+                </span></p>
+                <p style="margin-top:0pt; margin-bottom:0pt; line-height:150%;"><span
+                style="width:36pt; display:inline-block;">&nbsp;</span><span
+                style="width:36pt; display:inline-block;">&nbsp;</span><span
+                style="width:36pt; display:inline-block;">&nbsp;</span><span
+                style="font-family:'Times New Roman';">&nbsp;Berakhir Tanggal</span><span
+                style="width:22pt; display:inline-block;">&nbsp;</span><span style="font-family:'Times New Roman';">:
+                <?php
+                // Ubah format tanggal berakhir ke "dd-mm-yyyy"
+                $tanggalBerakhirFormatted = date("d-m-Y", strtotime($berakhir));
+                echo $tanggalBerakhirFormatted;
+                ?>
+                </span></p>
+
+        <p style="margin-top:0pt; margin-bottom:0pt; line-height:150%;"><span
             style="width:36pt; display:inline-block;">&nbsp;</span><span
             style="width:36pt; display:inline-block;">&nbsp;</span><span
             style="width:36pt; display:inline-block;">&nbsp;</span><span
-            style="font-family:'Times New Roman';">&nbsp;Bidang</span><span
-            style="width:16.75pt; display:inline-block;">&nbsp;</span><span
-            style="width:20pt; display:inline-block;">&nbsp;</span><span
-            style="width:36pt; display:inline-block;">&nbsp;</span><span style="font-family:'Times New Roman';">:
-            <?=$pangkat?></span></p>
-    <p style="margin-top:0pt; margin-bottom:0pt; line-height:150%;"><span
-            style="width:36pt; display:inline-block;">&nbsp;</span><span
-            style="width:36pt; display:inline-block;">&nbsp;</span><span
-            style="width:36pt; display:inline-block;">&nbsp;</span><span
-            style="font-family:'Times New Roman';">&nbsp;Jabatan</span><span
-            style="width:0.27pt; display:inline-block;">&nbsp;</span><span
-            style="width:36pt; display:inline-block;">&nbsp;</span><span
-            style="width:36pt; display:inline-block;">&nbsp;</span><span style="font-family:'Times New Roman';">: <?=$jabatan?></span></p>
+            style="font-family:'Times New Roman';">&nbsp;Durasi Cuti</span><span
+            style="width:36pt; display:inline-block;">&nbsp;</span><span style="font-family:'Times New Roman';">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:
+            <?=$days?> Hari</span></p>
     <p style="margin-top:0pt; margin-bottom:0pt; line-height:150%;"><span
             style="font-family:'Times New Roman';">&nbsp;</span></p>
-
-        <p style="margin-top:0pt;margin-left:30pt; margin-bottom:0pt; text-align:justify; line-height:150%;">
-                <span style="font-family:'Times New Roman';">
-                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Dengan ini saya mengajukan Permohonan Cuti selama <?=$days?> hari kerja, yaitu
-                        terhitung mulai dari tanggal 
-                        <?php
-                        $mulai = $i['mulai'];
-                        $berakhir = $i['berakhir']; 
-
-                        // Periksa apakah $mulai dan $berakhir memiliki nilai yang valid
-                        if ($mulai && $berakhir) {
-                        $tanggalMulaiFormatted = date("d-m-Y", strtotime($mulai));
-                        $tanggalBerakhirFormatted = date("d-m-Y", strtotime($berakhir));
-
-                        echo $tanggalMulaiFormatted . " s.d " . $tanggalBerakhirFormatted;
-                        } else {
-                        echo "Tidak valid"; // Ganti dengan pesan kesalahan atau tindakan yang sesuai
-                        }
-                        ?>
-                        yang akan di pergunakan untuk <?=$alasan?>.
-                </span>
-        </p>
-
 
     <p style="margin-top:0pt;margin-left:30pt;  margin-bottom:0pt; text-align:justify; line-height:150%;"><span
             style="width:36pt; display:inline-block;"></span><span
@@ -202,9 +181,8 @@ $id_status_cuti3 = $i['id_status_cuti3'];
     </p>
         
         <p style="margin-top:0pt;margin-left:30pt;  margin-bottom:0pt; text-align:justify; line-height:150%;"><span
-            style="font-family:'Times New Roman';">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Demikianlah permohonan ini saya ajukan. Atas pertimbangan dan perhatian Bapak Manajer,
-             saya mengucapkan terima kasih.
-</span><span>
+            style="font-family:'Times New Roman';">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Terima kasih atas perhatian Anda terhadap prosedur cuti. Semoga Anda dapat meraih waktu cuti yang menyenangkan dan kembali ke pekerjaan dengan semangat baru setelah cuti berakhir.
+        </span>
         </p>
 
     
@@ -215,22 +193,16 @@ $id_status_cuti3 = $i['id_status_cuti3'];
         
         <div style="text-align: center; margin-left: 480px;">
                 <p style="font-family: 'Times New Roman'; margin: 0;">Banjarbaru, 
-                        <span id="tanggalMulai">
-                        <?php
-                        $mulai = $i['mulai'];
-
-                        // Periksa apakah $mulai memiliki nilai yang valid
-                        if ($mulai) {
-                                $tanggalMulaiFormatted = date("d-m-Y", strtotime($mulai));
-                                echo $tanggalMulaiFormatted;
-                        } else {
-                                echo "Tidak valid"; // Ganti dengan pesan kesalahan atau tindakan yang sesuai
-                        }
-                        ?>
+                        <span id="tanggalHariIni">
+                                <?php
+                                $tanggalHariIni = date("d-m-Y");
+                                echo $tanggalHariIni;
+                                ?>
                         </span>
-                </p><br><br><br>
+                </p>
+                <br><br><br>
                 <p style="margin-top: 10px;">__________________________</p>
-                <p style="font-family: 'Times New Roman'; margin: 0;"><?=$nama_lengkap?></p>
+                <p style="font-family: 'Times New Roman'; margin: 0;">Manajer PLN KSKT UP2</p>
         </div>
     <?php endforeach; ?>
 </body>

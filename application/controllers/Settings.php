@@ -64,30 +64,26 @@ class Settings extends CI_Controller {
 		$password = $this->input->post("password");
 		$re_password = $this->input->post("re_password");
 
-		// echo var_dump($id);
-		// echo var_dump($username);
-		// echo var_dump($password);
-		// echo var_dump($re_password);
-		// die();
+		if ($password == $re_password) {
+			// Mengenkripsi password menggunakan bcrypt
+			$hashed_password = password_hash($password, PASSWORD_BCRYPT);
+			
+			// Memanggil model untuk mengupdate data pengguna dengan password yang terenkripsi
+			$hasil = $this->m_user->update_user($id, $username, $hashed_password);
 
-		if($password == $re_password)
-        {
-            $hasil = $this->m_user->update_user($id, $username, $password);
-
-            if($hasil==false){
-                $this->session->set_flashdata('eror_edit','eror_edit');
-                redirect('Settings/view_manager');
-			}else{
-				$this->session->set_flashdata('edit','edit');
-				redirect('Settings/view_manager');
+			if ($hasil == false) {
+				$this->session->set_flashdata('error_edit', 'error_edit');
+			} else {
+				$this->session->set_flashdata('edit', 'edit');
 			}
 			
-        }else{
-            $this->session->set_flashdata('password_err','password_err');
 			redirect('Settings/view_manager');
-        }
+		} else {
+			$this->session->set_flashdata('password_err', 'password_err');
+			redirect('Settings/view_manager');
+		}
 	}
-	
+
 	public function settings_account_super_admin()
 	{
 		$id = $this->session->userdata('id_user');
@@ -95,29 +91,26 @@ class Settings extends CI_Controller {
 		$password = $this->input->post("password");
 		$re_password = $this->input->post("re_password");
 
-		// echo var_dump($id);
-		// echo var_dump($username);
-		// echo var_dump($password);
-		// echo var_dump($re_password);
-		// die();
+		if ($password == $re_password) {
+			// Mengenkripsi password menggunakan bcrypt
+			$hashed_password = password_hash($password, PASSWORD_BCRYPT);
+			
+			// Memanggil model untuk mengupdate data pengguna dengan password yang terenkripsi
+			$hasil = $this->m_user->update_user($id, $username, $hashed_password);
 
-		if($password == $re_password)
-        {
-            $hasil = $this->m_user->update_user($id, $username, $password);
-
-            if($hasil==false){
-                $this->session->set_flashdata('eror_edit','eror_edit');
-                redirect('Settings/view_super_admin');
-			}else{
-				$this->session->set_flashdata('edit','edit');
-				redirect('Settings/view_super_admin');
+			if ($hasil == false) {
+				$this->session->set_flashdata('error_edit', 'error_edit');
+			} else {
+				$this->session->set_flashdata('edit', 'edit');
 			}
 			
-        }else{
-            $this->session->set_flashdata('password_err','password_err');
 			redirect('Settings/view_super_admin');
-        }
+		} else {
+			$this->session->set_flashdata('password_err', 'password_err');
+			redirect('Settings/view_super_admin');
+		}
 	}
+
 
 	public function settings_account_admin()
 	{
@@ -126,29 +119,26 @@ class Settings extends CI_Controller {
 		$password = $this->input->post("password");
 		$re_password = $this->input->post("re_password");
 
-		// echo var_dump($id);
-		// echo var_dump($username);
-		// echo var_dump($password);
-		// echo var_dump($re_password);
-		// die();
+		if ($password == $re_password) {
+			// Mengenkripsi password menggunakan bcrypt
+			$hashed_password = password_hash($password, PASSWORD_BCRYPT);
+			
+			// Memanggil model untuk mengupdate data pengguna dengan password yang terenkripsi
+			$hasil = $this->m_user->update_user($id, $username, $hashed_password);
 
-		if($password == $re_password)
-        {
-            $hasil = $this->m_user->update_user($id, $username, $password);
-
-            if($hasil==false){
-                $this->session->set_flashdata('eror_edit','eror_edit');
-                redirect('Settings/view_admin');
-			}else{
-				$this->session->set_flashdata('edit','edit');
-				redirect('Settings/view_admin');
+			if ($hasil == false) {
+				$this->session->set_flashdata('error_edit', 'error_edit');
+			} else {
+				$this->session->set_flashdata('edit', 'edit');
 			}
 			
-        }else{
-            $this->session->set_flashdata('password_err','password_err');
 			redirect('Settings/view_admin');
-        }
+		} else {
+			$this->session->set_flashdata('password_err', 'password_err');
+			redirect('Settings/view_admin');
+		}
 	}
+
 
 	public function settings_account_operator()
 	{
@@ -157,28 +147,25 @@ class Settings extends CI_Controller {
 		$password = $this->input->post("password");
 		$re_password = $this->input->post("re_password");
 
-		// echo var_dump($id);
-		// echo var_dump($username);
-		// echo var_dump($password);
-		// echo var_dump($re_password);
-		// die();
+		if ($password == $re_password) {
+			// Mengenkripsi password menggunakan MD5
+			$encrypted_password = md5($password);
+			
+			// Memanggil model untuk mengupdate data pengguna dengan password yang terenkripsi
+			$hasil = $this->m_user->update_user($id, $username, $encrypted_password);
 
-		if($password == $re_password)
-        {
-            $hasil = $this->m_user->update_user($id, $username, $password);
-
-            if($hasil==false){
-                $this->session->set_flashdata('eror_edit','eror_edit');
-                redirect('Settings/view_operator');
-			}else{
-				$this->session->set_flashdata('edit','edit');
-				redirect('Settings/view_operator');
+			if ($hasil == false) {
+				$this->session->set_flashdata('error_edit', 'error_edit');
+			} else {
+				$this->session->set_flashdata('edit', 'edit');
 			}
 			
-        }else{
-            $this->session->set_flashdata('password_err','password_err');
 			redirect('Settings/view_operator');
-        }
+		} else {
+			$this->session->set_flashdata('password_err', 'password_err');
+			redirect('Settings/view_operator');
+		}
 	}
+
     
 }

@@ -27,7 +27,7 @@ class M_cuti extends CI_Model
         return $hasil;
     }
 
-    public function insert_data_cuti($id_cuti, $id_user, $alasan, $mulai, $berakhir, $id_status_cuti2, $perihal_cuti)
+    public function insert_data_cuti($id_cuti, $id_user, $alasan, $mulai, $berakhir,$id_status_cuti1, $id_status_cuti2,$id_status_cuti3, $perihal_cuti)
     {
         $this->db->trans_start();
         $this->db->query("INSERT INTO cuti(id_cuti,id_user, alasan, tgl_diajukan, mulai, berakhir,id_status_cuti1, id_status_cuti2,id_status_cuti3, perihal_cuti) VALUES ('$id_cuti','$id_user','$alasan',NOW(),'$mulai', '$berakhir', '$id_status_cuti1', '$id_status_cuti2','$id_status_cuti3', '$perihal_cuti')");
@@ -99,7 +99,41 @@ class M_cuti extends CI_Model
         $hasil = $this->db->query('SELECT COUNT(id_cuti) as total_cuti FROM cuti JOIN user ON cuti.id_user = user.id_user JOIN user_detail ON user.id_user_detail = user_detail.id_user_detail');
         return $hasil;
     }
+    
+    public function hitung_total_hari_cuti_dalam_setahun($id_user) {
+        // Ambil tanggal awal dan akhir untuk satu tahun
+        $tahun_ini = date('Y');
+        $tanggal_awal = $tahun_ini . '-01-01'; // Tanggal awal tahun ini
+        $tanggal_akhir = $tahun_ini . '-12-31'; // Tanggal akhir tahun ini
+    
+        // Query ke basis data untuk mengambil cuti dalam rentang tanggal satu tahun
+        $this->db->where('id_user', $id_user);
+        $this->db->where('mulai >=', $tanggal_awal);
+        $this->db->where('berakhir <=', $tanggal_akhir);
+        $query = $this->db->get('cuti');
+    
+        $total_hari_cuti = 0;
+    
+        // Loop melalui hasil query untuk menghitung durasi cuti
+        foreach ($query->result() as $row) {
+            $mulai = strtotime($row->mulai);
+            $berakhir = strtotime($row->berakhir);
+    
+            // Pemeriksaan untuk hari Sabtu dan Minggu (akhir pekan)
+            while ($mulai <= $berakhir) {
+                // Memeriksa apakah hari ini bukan Sabtu (6) atau Minggu (0)
+                if (date("N", $mulai) != 6 && date("N", $mulai) != 7) {
+                    $total_hari_cuti++;
+                }
+                $mulai = strtotime("+1 day", $mulai);
+            }
+        }
+    
+        return $total_hari_cuti;
+    }
+    
 
+    
     public function count_all_cuti_by_id($id_user)
     {
         $hasil = $this->db->query("SELECT COUNT(id_cuti) as total_cuti FROM cuti JOIN user ON cuti.id_user = user.id_user JOIN user_detail ON user.id_user_detail = user_detail.id_user_detail WHERE cuti.id_user='$id_user'");
@@ -142,5 +176,12 @@ class M_cuti extends CI_Model
         return $hasil;
     }
 
-
+    public function get_permohonan_cuti_by_user($id_user) {
+        // Gantilah 'nama_tabel' dengan nama tabel yang sesuai dalam database Anda
+        $this->db->select('*');
+        $this->db->from('user');
+        $this->db->where('id_user', $id_user);
+        $query = $this->db->get();
+        return $query->result_array();
+    }
 }

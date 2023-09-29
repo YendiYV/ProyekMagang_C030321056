@@ -79,14 +79,11 @@
                         </div>
                         <div class="form-group">
                             <label for="mulai">Mulai Cuti</label>
-                            <input type="date" class="form-control" id="mulai" aria-describedby="mulai" name="mulai"
-                                required>
+                            <input type="date" class="form-control" id="mulai" aria-describedby="mulai" name="mulai" required>
                         </div>
                         <div class="form-group">
                             <label for="berakhir">Berakhir Cuti</label>
-                            <input type="date" class="form-control" id="berakhir" aria-describedby="berakhir"
-                                name="berakhir" required>
-
+                            <input type="date" class="form-control" id="berakhir" aria-describedby="berakhir" name="berakhir" required>
                         </div>
 
                         <button type="submit" class="btn btn-primary">Submit</button>
@@ -110,3 +107,41 @@
 </body>
 
 </html>
+<script>
+    // Dapatkan elemen input tanggal
+    var mulaiInput = document.getElementById("mulai");
+
+    // Dapatkan tanggal saat ini
+    var today = new Date();
+
+    // Tambahkan 1 hari ke tanggal saat ini
+    today.setDate(today.getDate() + 1);
+
+    // Format tanggal saat ini ke dalam format YYYY-MM-DD untuk input tanggal HTML
+    var tomorrow = today.toISOString().split('T')[0];
+
+    // Set batasan tanggal minimum pada input tanggal
+    mulaiInput.setAttribute("min", tomorrow);
+</script>
+<script>
+    // Dapatkan elemen input tanggal "Berakhir Cuti"
+    var berakhirInput = document.getElementById("berakhir");
+
+    // Dapatkan tanggal saat ini
+    var today = new Date();
+
+    // Tambahkan 1 hari ke tanggal saat ini
+    today.setDate(today.getDate() + 1);
+
+    // Format tanggal saat ini ke dalam format YYYY-MM-DD untuk input tanggal HTML
+    var tomorrow = today.toISOString().split('T')[0];
+
+    // Set batasan tanggal minimum pada input tanggal "Berakhir Cuti"
+    berakhirInput.setAttribute("min", tomorrow);
+</script>
+Dengan kode di atas, Anda akan memiliki input "Berakhir Cuti" yang hanya memungkinkan pengguna untuk memilih tanggal besok atau setelahnya, mirip dengan input "Mulai Cuti."
+
+
+
+
+

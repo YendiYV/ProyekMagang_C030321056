@@ -14,6 +14,8 @@ class Login extends CI_Controller {
 		$this->load->view('login');
 	}
 
+		
+	
 	public function proses()
 	{
 		$username = $this->input->post("username");
@@ -66,7 +68,6 @@ class Login extends CI_Controller {
 	
 					$this->session->set_flashdata('success_login','success_login');
 					redirect('Dashboard/dashboard_manager');
-	
 				}else{
 					$this->session->set_flashdata('loggin_err','loggin_err');
 					redirect('Login/index');
@@ -84,6 +85,9 @@ class Login extends CI_Controller {
 		}
 		
 	}
+
+
+
 
 	public function log_out(){
 		$this->session->unset_userdata('logged_in');

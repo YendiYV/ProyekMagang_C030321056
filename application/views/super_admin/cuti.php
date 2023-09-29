@@ -86,6 +86,7 @@
                                                 <th>Status Cuti 2</th>
                                                 <th>Status Cuti 3</th>
                                                 <th>Cetak Surat Pengajuan</th>
+                                                <th>Cetak Surat Konfirmasi</th>
                                                 <th>Aksi</th>
                                             </tr>
                                         </thead>
@@ -205,9 +206,20 @@
                                                     <?php }?>
                                                 </td>
                                                 <td>
-                                                    <?php if ($id_status_cuti1 == 2 && $id_status_cuti2 == 2 && $id_status_cuti3 ==2) { ?>
+                                                    <?php if ($id_status_cuti1 == 2 && $id_status_cuti2 == 2) { ?>
                                                         <a href="<?= base_url(); ?>Cetak/surat_cuti_pdf/<?= $id_cuti ?>" target="_blank" class="btn btn-info">
                                                             Cetak Surat Pengajuan
+                                                        </a>
+                                                    <?php } else { ?>
+                                                        <a href="" class="btn btn-danger">
+                                                            Belum Dapat Mencetak
+                                                        </a>
+                                                    <?php } ?>
+                                                </td>
+                                                <td>
+                                                    <?php if ($id_status_cuti1 == 2 && $id_status_cuti2 == 2 && $id_status_cuti3 == 2) { ?>
+                                                        <a href="<?= base_url(); ?>CetakAcc/surat_cuti_acc_pdf/<?= $id_cuti ?>" target="_blank" class="btn btn-info">
+                                                            Cetak Surat Konfirmasi
                                                         </a>
                                                     <?php } else { ?>
                                                         <a href="" class="btn btn-danger">

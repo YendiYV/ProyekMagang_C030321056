@@ -66,6 +66,7 @@ class Cuti extends CI_Controller {
 		$data['operator'] = $this->m_user->get_operator_by_id($this->session->userdata('id_user'))->row_array();
 		$data['jenis_kelamin'] = $this->m_jenis_kelamin->get_all_jenis_kelamin()->result_array();
 		$data['operator_data'] = $this->m_user->get_operator_by_id($this->session->userdata('id_user'))->result_array();
+		
 		$this->load->view('operator/cuti', $data);
 
 		}else{
@@ -179,6 +180,5 @@ class Cuti extends CI_Controller {
 		}
 
 		redirect('Cuti/view_manager/'.$id_user);
-	}
-    
+	}	
 }

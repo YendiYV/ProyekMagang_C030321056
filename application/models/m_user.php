@@ -47,7 +47,7 @@ class M_user extends CI_Model
         return $hasil;
         
     }
-
+    
     public function pendaftaran_user($id, $username, $email, $password, $id_user_level)
     {
        $this->db->trans_start();

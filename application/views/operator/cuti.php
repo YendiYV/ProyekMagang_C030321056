@@ -205,7 +205,7 @@
                                                 </td>
                                                 <td>
                                                     <?php if ($id_status_cuti1 == 2 && $id_status_cuti2 == 2 && $id_status_cuti3 ==2) { ?>
-                                                        <a href="<?= base_url(); ?>Cetak/surat_cuti_pdf/<?= $id_cuti ?>" target="_blank" class="btn btn-info">
+                                                        <a href="<?= base_url(); ?>CetakAcc/surat_cuti_acc_pdf/<?= $id_cuti ?>" target="_blank" class="btn btn-info">
                                                             Cetak Surat Pengajuan
                                                         </a>
                                                     <?php } else { ?>

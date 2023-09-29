@@ -31,36 +31,37 @@ class Form_Cuti extends CI_Controller {
 	
 	public function proses_cuti()
 	{
-	if ($this->session->userdata('logged_in') == true AND $this->session->userdata('id_user_level') == 1) {
+		if ($this->session->userdata('logged_in') == true AND $this->session->userdata('id_user_level') == 1) {
 
-		$id_user = $this->input->post("id_user");
-		$alasan = $this->input->post("alasan");
-		$perihal_cuti = $this->input->post("perihal_cuti");
-		$mulai = $this->input->post("mulai");
-		$berakhir = $this->input->post("berakhir");
-		$id_cuti = md5($id_user.$alasan.$mulai);
-		
-		$id_status_cuti1 = 1;
-		$id_status_cuti2 = 1;
-		$id_status_cuti3 = 1;
+			$id_user = $this->input->post("id_user");
+			$alasan = $this->input->post("alasan");
+			$perihal_cuti = $this->input->post("perihal_cuti");
+			$mulai = $this->input->post("mulai");
+			$berakhir = $this->input->post("berakhir");
 
-		$hasil = $this->m_cuti->insert_data_cuti('cuti-'.substr($id_cuti, 0, 5),$id_user, $alasan, $mulai, $berakhir,$id_status_cuti1,$id_status_cuti2, $id_status_cuti3, $perihal_cuti);
 
-		if($hasil==false){
-			$this->session->set_flashdata('eror_input','eror_input');
-		
-		}else{
-			$this->session->set_flashdata('input','input');
+			$tahun = date("Y");
+
+			$nomor_urut = mt_rand(1, 9999);
+			$nomor_urut_cuti = $nomor_urut."-SP-Cuti-" . $tahun;
+
+
+			$id_status_cuti1 = 1;
+			$id_status_cuti2 = 1;
+			$id_status_cuti3 = 1;
+
+			$hasil = $this->m_cuti->insert_data_cuti($nomor_urut_cuti, $id_user, $alasan, $mulai, $berakhir, $id_status_cuti1, $id_status_cuti2, $id_status_cuti3, $perihal_cuti);
+
+			if ($hasil == false) {
+				$this->session->set_flashdata('eror_input', 'eror_input');
+			} else {
+				$this->session->set_flashdata('input', 'input');
+			}
+			redirect('Form_Cuti/view_operator');
+		} else {
+			$this->session->set_flashdata('loggin_err', 'loggin_err');
+			redirect('Login/index');
 		}
-		redirect('Form_Cuti/view_operator');
-
-	}else{
-
-		$this->session->set_flashdata('loggin_err','loggin_err');
-		redirect('Login/index');
-
 	}
 
-	}
-    
 }

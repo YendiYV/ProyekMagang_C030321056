@@ -81,50 +81,6 @@
                         <!-- ./col -->
                         <div class="col-lg-3 col-6">
                             <!-- small box -->
-                            <div class="small-box bg-success">
-                                <div class="inner">
-                                    <h3><?= $cuti_acc['total_cuti'] ?></h3>
-
-                                    <p>Data Cuti Diterima</p>
-                                </div>
-                                <div class="icon">
-                                    <i class="ion ion-stats-bars"></i>
-                                </div>
-                                <a href="<?= base_url(); ?>Cuti/view_operator/<?= $this->session->userdata('id_user'); ?>" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
-                            </div>
-                        </div>
-                        <!-- ./col -->
-                        <div class="col-lg-3 col-6">
-                            <!-- small box -->
-                            <div class="small-box bg-danger">
-                                <div class="inner">
-                                    <h3><?= $cuti_reject['total_cuti'] ?></h3>
-
-                                    <p>Data Cuti Ditolak</p>
-                                </div>
-                                <div class="icon">
-                                    <i class="ion ion-person-add"></i>
-                                </div>
-                                <a href="<?= base_url(); ?>Cuti/view_operator/<?= $this->session->userdata('id_user'); ?>" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
-                            </div>
-                        </div>
-                        <!-- ./col -->
-                        <div class="col-lg-3 col-6">
-                            <!-- small box -->
-                            <div class="small-box bg-warning">
-                                <div class="inner">
-                                    <h3><?= $cuti_confirm['total_cuti'] ?></h3>
-
-                                    <p>Data Cuti Menunggu Konfirmasi</p>
-                                </div>
-                                <div class="icon">
-                                    <i class="ion ion-person-add"></i>
-                                </div>
-                                <a href="<?= base_url(); ?>Cuti/view_operator/<?= $this->session->userdata('id_user'); ?>" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
-                            </div>
-                        </div>
-                        <div class="col-lg-3 col-6">
-                            <!-- small box -->
                             <div class="small-box bg-warning">
                                 <div class="inner">
                                     <h3><?php
@@ -166,6 +122,21 @@
                                 <a href="<?= base_url(); ?>Cuti/view_operator/<?= $this->session->userdata('id_user'); ?>" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
                             </div>
                         </div>
+
+                        <div class="col-lg-3 col-6">
+                            <!-- small box -->
+                            <div class="small-box bg-danger">
+                                <div class="inner">
+                                    <h3><?= $total_hari_cuti ?></h3>
+                                    <p>Total Hari Cuti Dalam Setahun</p>
+                                </div>
+                                <div class="icon">
+                                    <i class="ion ion-plus"></i>
+                                </div>
+                                <a href="<?= base_url(); ?>Cuti/view_operator/<?= $this->session->userdata('id_user'); ?>" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
+                            </div>
+                        </div>
+
 
                     </div>
                     <h1>Syarat Permohonan Cuti</h1>
