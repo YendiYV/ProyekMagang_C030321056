@@ -68,7 +68,7 @@ class Dashboard extends CI_Controller {
 			redirect('Login/index');
 		}
 	}
-
+	
 	public function dashboard_manager()
 	{
 		if ($this->session->userdata('logged_in') == true AND $this->session->userdata('id_user_level') == 4) {
