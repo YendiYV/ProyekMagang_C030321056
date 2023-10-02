@@ -116,7 +116,7 @@
                                 <div class="inner">
                                     <h3><?=$operator['total_user']?></h3>
 
-                                    <p>operator</p>
+                                    <p>Operator</p>
                                 </div>
                                 <div class="icon">
                                     <i class="ion ion-pie-graph"></i>

@@ -124,7 +124,7 @@
                                         <thead>
                                             <tr>
                                                 <th>No</th>
-                                                <th>Username</th>
+                                                <th>NIP</th>
                                                 <th>Nama Lengkap</th>
                                                 <th>Jenis Kelamin</th>
                                                 <th>No Telp</th>
@@ -141,7 +141,6 @@
                                             $id_user = $i['id_user'];
                                             $username = $i['username'];
                                             $password = $i['password'];
-                                            $email = $i['email'];
                                             $nama_lengkap = $i['nama_lengkap'];
                                             $jenis_kelamin = $i['jenis_kelamin'];
                                             $id_jenis_kelamin = $i['id_jenis_kelamin'];
@@ -221,7 +220,7 @@
                                                     <div class="modal-content">
                                                         <div class="modal-header">
                                                             <h5 class="modal-title" id="exampleModalLabel">Edit
-                                                                operator</h5>
+                                                                Operator</h5>
                                                             <button type="button" class="close" data-dismiss="modal"
                                                                 aria-label="Close">
                                                                 <span aria-hidden="true">&times;</span>
@@ -232,21 +231,29 @@
                                                                 method="POST">
                                                                 <input type="text" value="<?= $id_user ?>" name="id_user" hidden>
                                                                 <div class="form-group">
-                                                                    <label for="username">Username</label>
-                                                                    <input type="text" class="form-control"
-                                                                        id="username" aria-describedby="username"
-                                                                        name="username" value="<?= $username ?>" required>
+                                                                    <label for="username">NIP</label>
+                                                                    <input type="text" class="form-control" id="username" aria-describedby="username"
+                                                                        name="username" value="<?= $username ?>" required oninput="validateNIP(this)">
+                                                                    <small id="usernameError" class="text-danger"></small>
                                                                 </div>
+
+                                                                <script>
+                                                                function validateNIP(input) {
+                                                                    var numericValue = input.value.replace(/\D/g, ''); // Hapus semua karakter selain angka
+                                                                    if (numericValue.length > 18) {
+                                                                        document.getElementById("usernameError").textContent = "NIP tidak boleh lebih dari 18 angka.";
+                                                                        input.setCustomValidity("NIP tidak boleh lebih dari 18 angka.");
+                                                                    } else {
+                                                                        document.getElementById("usernameError").textContent = "";
+                                                                        input.setCustomValidity("");
+                                                                    }
+                                                                }
+                                                                </script>
                                                                 <div class="form-group">
                                                                     <label for="password">Password</label>
                                                                     <input type="text" class="form-control"
                                                                         id="password" aria-describedby="password"
                                                                         name="password" value="<?= $password ?>" required>
-                                                                </div>
-                                                                <div class="form-group">
-                                                                    <label for="email">email</label>
-                                                                    <input type="text" class="form-control" id="email"
-                                                                        aria-describedby="email" name="email" value="<?= $email ?>" required>
                                                                 </div>
                                                                 <div class="form-group">
                                                                     <label for="nama_lengkap">Nama Lengkap</label>
@@ -285,6 +292,26 @@
                                                                     <input type="text" class="form-control" id="alamat"
                                                                         aria-describedby="alamat" name="alamat" value="<?= $alamat ?>" required>
                                                                 </div>
+                                                                <div class="form-group">
+                                                                    <label for="proyek">Proyek</label>
+                                                                    <select class="form-control" id="proyek" name="proyek" value="<?= $proyek?>"  required>
+                                                                        <option value="Proyek TL">Proyek Tamiang Layang</option>
+                                                                        <option value="Proyek PKY">Proyek Palangkaraya</option>
+                                                                        <option value="Proyek PP">Proyek Pulang Pisau</option>
+                                                                        <!-- Tambahkan pilihan proyek lainnya sesuai kebutuhan -->
+                                                                    </select>
+                                                                </div>
+                                                                <div class="form-group">
+                                                                    <label for="jabatan">Jabatan</label>
+                                                                    <select class="form-control" id="jabatan" name="jabatan" value="<?= $jabatan ?>" required>
+                                                                        <option value="Operator 1">Operator 1</option>
+                                                                        <option value="Operator 2">Operator 2</option>
+                                                                        <option value="Operator 3">Operator 3</option>
+                                                                        <option value="Operator 4">Operator 4</option>
+                                                                        <!-- Tambahkan pilihan jabatan lainnya sesuai kebutuhan -->
+                                                                    </select>
+                                                                </div>
+
                                                                 <button type="submit"
                                                                     class="btn btn-primary">Submit</button>
                                                             </form>
@@ -321,19 +348,40 @@
                         <div class="modal-body">
                             <form action="<?=base_url();?>operator/tambah_operator" method="POST">
                                 <div class="form-group">
-                                    <label for="username">Username</label>
+                                    <label for="username">NIP</label>
                                     <input type="text" class="form-control" id="username" aria-describedby="username"
-                                        name="username" required>
+                                        name="username" required pattern="[0-9]{1,18}">
+                                    <small class="text-muted">Harus berupa angka dan tidak lebih dari 18 karakter.</small>
                                 </div>
+                                <script>
+                                    // Fungsi JavaScript untuk membatasi input hanya berisi angka dan tidak lebih dari 18 digit
+                                    document.getElementById("username").addEventListener("input", function () {
+                                        // Menghapus karakter selain angka
+                                        this.value = this.value.replace(/\D/g, '');
+
+                                        // Memastikan panjang input tidak lebih dari 18 digit
+                                        if (this.value.length > 18) {
+                                            document.getElementById("usernameError").textContent = "NIP tidak boleh lebih dari 18 angka.";
+                                            this.value = this.value.slice(0, 18);
+                                        }else {
+                                            document.getElementById("usernameError").textContent = "";
+                                            input.setCustomValidity("");
+                                            }
+                                    });
+                                </script>
+
+
+
                                 <div class="form-group">
                                     <label for="password">Password</label>
-                                    <input type="text" class="form-control" id="password" aria-describedby="password"
-                                        name="password" required>
+                                    <div class="input-group">
+                                        <input type="password" class="form-control" id="password" aria-describedby="password" name="password" required>
+                                    </div>
                                 </div>
+
                                 <div class="form-group">
-                                    <label for="email">email</label>
-                                    <input type="text" class="form-control" id="email" aria-describedby="email"
-                                        name="email" required>
+                                    <label for="confirm_password">Konfirmasi Password</label>
+                                    <input type="password" class="form-control" id="confirm_password" name="confirm_password" required>
                                 </div>
                                 <div class="form-group">
                                     <label for="nama_lengkap">Nama Lengkap</label>
@@ -363,6 +411,17 @@
                                     <input type="text" class="form-control" id="alamat" aria-describedby="alamat"
                                         name="alamat" required>
                                 </div>
+                                <div class="form-group">
+                                    <label for="jabatan">Jabatan</label>
+                                    <select class="form-control" id="jabatan" name="jabatan" required>
+                                        <option value="Operator 1">Operator 1</option>
+                                        <option value="Operator 2">Operator 2</option>
+                                        <option value="Operator 3">Operator 3</option>
+                                        <option value="Operator 4">Operator 4</option>
+                                        <!-- Tambahkan pilihan jabatan lainnya sesuai kebutuhan -->
+                                    </select>
+                                </div>
+
                                 <button type="submit" class="btn btn-primary">Submit</button>
                             </form>
                         </div>
@@ -383,5 +442,7 @@
 
     <?php $this->load->view("admin/components/js.php") ?>
 </body>
-
 </html>
+
+
+

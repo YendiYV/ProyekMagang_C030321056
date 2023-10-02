@@ -64,69 +64,65 @@ class operator extends CI_Controller {
 	public function tambah_operator()
 	{
 		if ($this->session->userdata('logged_in') == true AND $this->session->userdata('id_user_level') == 2) {
+			$username = $this->input->post("username");
+			$password = md5($this->input->post("password"));
+			$nama_lengkap = $this->input->post("nama_lengkap");
+			$id_jenis_kelamin = $this->input->post("id_jenis_kelamin");
+			$no_telp = $this->input->post("no_telp");
+			$alamat = $this->input->post("alamat");
+			$id_user_level = 1;
+			$jabatan = $this->input->post("jabatan"); // Menambahkan jabatan ke dalam parameter
 
-		$username = $this->input->post("username");
-        $password = $this->input->post("password");
-		$email = $this->input->post("email");
-		$nama_lengkap = $this->input->post("nama_lengkap");
-		$id_jenis_kelamin = $this->input->post("id_jenis_kelamin");
-		$no_telp = $this->input->post("no_telp");
-		$alamat = $this->input->post("alamat");
-		$id_user_level = 1;
-        $id = md5($username.$email.$password);
+			$id = md5($username.$password);
 
-        
-            $hasil = $this->m_user->insert_operator($id, $username, $email, $password, $id_user_level, $nama_lengkap, $id_jenis_kelamin, $no_telp, $alamat);
+			$hasil = $this->m_user->insert_operator($id, $username, $password, $id_user_level, $nama_lengkap, $id_jenis_kelamin, $no_telp, $alamat, $jabatan); // Memasukkan jabatan sebagai argumen
 
-            if($hasil==false){
-                $this->session->set_flashdata('eror','eror');
-                redirect('operator/view_admin');
-			}else{
-				$this->session->set_flashdata('input','input');
+			if ($hasil == false) {
+				$this->session->set_flashdata('eror', 'eror');
 				redirect('operator/view_admin');
-            }
-
-     	}else{
-
-			$this->session->set_flashdata('loggin_err','loggin_err');
-			redirect('Login/index');
-	
-		}
-	}
-
-	public function edit_operator()
-	{
-		if ($this->session->userdata('logged_in') == true AND $this->session->userdata('id_user_level') == 2) {
-
-		$username = $this->input->post("username");
-        $password = $this->input->post("password");
-		$email = $this->input->post("email");
-		$nama_lengkap = $this->input->post("nama_lengkap");
-		$id_jenis_kelamin = $this->input->post("id_jenis_kelamin");
-		$no_telp = $this->input->post("no_telp");
-		$alamat = $this->input->post("alamat");
-		$id_user_level = 1;
-        $id = $this->input->post("id_user");
-
-        
-            $hasil = $this->m_user->update_operator($id, $username, $email, $password, $id_user_level, $nama_lengkap, $id_jenis_kelamin, $no_telp, $alamat);
-
-            if($hasil==false){
-                $this->session->set_flashdata('eror_edit','eror_edit');
-                redirect('operator/view_admin');
-			}else{
-				$this->session->set_flashdata('edit','edit');
+			} else {
+				$this->session->set_flashdata('input', 'input');
 				redirect('operator/view_admin');
 			}
-			
-		}else{
 
-			$this->session->set_flashdata('loggin_err','loggin_err');
+		} else {
+
+			$this->session->set_flashdata('loggin_err', 'loggin_err');
 			redirect('Login/index');
-	
+
 		}
-     
 	}
+
+
+	public function edit_operator() {
+        if ($this->session->userdata('logged_in') == true AND $this->session->userdata('id_user_level') == 2) {
+            $id_user = $this->input->post("id_user");
+            $username = $this->input->post("username");
+            $password = md5($this->input->post("password"));
+            $nama_lengkap = $this->input->post("nama_lengkap");
+            $id_jenis_kelamin = $this->input->post("id_jenis_kelamin");
+            $no_telp = $this->input->post("no_telp");
+            $alamat = $this->input->post("alamat");
+            $jabatan = $this->input->post("jabatan");
+            $proyek = $this->input->post("proyek");
+
+            // Call the model method to update the operator
+            $hasil = $this->m_user->update_operator($id_user, $username, $password, 1, $nama_lengkap, $id_jenis_kelamin, $no_telp, $alamat, $jabatan, $proyek);
+
+            if ($hasil == false) {
+                $this->session->set_flashdata('error', 'Error');
+            } else {
+                $this->session->set_flashdata('success', 'Success');
+            }
+
+            redirect('operator/view_admin');
+        } else {
+            $this->session->set_flashdata('login_err', 'Login Error');
+            redirect('Login/index');
+        }
+    }
+
+
 
 	public function hapus_operator()
 	{
@@ -158,16 +154,15 @@ class operator extends CI_Controller {
 	if ($this->session->userdata('logged_in') == true AND $this->session->userdata('id_user_level') == 3) {
 		$username = $this->input->post("username");
         $password = $this->input->post("password");
-		$email = $this->input->post("email");
 		$nama_lengkap = $this->input->post("nama_lengkap");
 		$id_jenis_kelamin = $this->input->post("id_jenis_kelamin");
 		$no_telp = $this->input->post("no_telp");
 		$alamat = $this->input->post("alamat");
 		$id_user_level = 1;
-        $id = md5($username.$email.$password);
+        $id = md5($username.$password);
 
         
-            $hasil = $this->m_user->insert_operator($id, $username, $email, $password, $id_user_level, $nama_lengkap, $id_jenis_kelamin, $no_telp, $alamat);
+            $hasil = $this->m_user->insert_operator($id, $username, $password, $id_user_level, $nama_lengkap, $id_jenis_kelamin, $no_telp, $alamat);
 
             if($hasil==false){
                 $this->session->set_flashdata('eror','eror');
@@ -191,7 +186,6 @@ class operator extends CI_Controller {
 
 		$username = $this->input->post("username");
         $password = $this->input->post("password");
-		$email = $this->input->post("email");
 		$nama_lengkap = $this->input->post("nama_lengkap");
 		$id_jenis_kelamin = $this->input->post("id_jenis_kelamin");
 		$no_telp = $this->input->post("no_telp");
@@ -200,7 +194,7 @@ class operator extends CI_Controller {
         $id = $this->input->post("id_user");
 
         
-            $hasil = $this->m_user->update_operator($id, $username, $email, $password, $id_user_level, $nama_lengkap, $id_jenis_kelamin, $no_telp, $alamat);
+            $hasil = $this->m_user->update_operator($id, $username, $password, $id_user_level, $nama_lengkap, $id_jenis_kelamin, $no_telp, $alamat);
 
             if($hasil==false){
                 $this->session->set_flashdata('eror_edit','eror_edit');

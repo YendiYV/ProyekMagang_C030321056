@@ -54,7 +54,6 @@
                                             $password = $i['password'];
                                             $nama_lengkap = $i['nama_lengkap'];
                                             $id_jenis_kelamin = $i['id_jenis_kelamin'];
-                                            $email = $i['email'];
                                             $nip = $i['nip'];
                                             $pangkat = $i['pangkat'];
                                             $jabatan = $i['jabatan'];

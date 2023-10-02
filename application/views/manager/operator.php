@@ -144,7 +144,6 @@
                                             $jenis_kelamin = $i['jenis_kelamin'];
                                             $id_jenis_kelamin = $i['id_jenis_kelamin'];
                                             $no_telp = $i['no_telp'];
-                                            $email = $i['email'];
                                             $alamat = $i['alamat'];
 
                                             ?>
@@ -246,12 +245,6 @@
                                                                         required>
                                                                 </div>
                                                                 <div class="form-group">
-                                                                    <label for="email">email</label>
-                                                                    <input type="text" class="form-control" id="email"
-                                                                        aria-describedby="email" name="email"
-                                                                        value="<?= $email ?>" required>
-                                                                </div>
-                                                                <div class="form-group">
                                                                     <label for="nama_lengkap">Nama Lengkap</label>
                                                                     <input type="text" class="form-control"
                                                                         id="nama_lengkap"
@@ -332,11 +325,6 @@
                                     <label for="password">Password</label>
                                     <input type="text" class="form-control" id="password" aria-describedby="password"
                                         name="password" required>
-                                </div>
-                                <div class="form-group">
-                                    <label for="email">email</label>
-                                    <input type="text" class="form-control" id="email" aria-describedby="email"
-                                        name="email" required>
                                 </div>
                                 <div class="form-group">
                                     <label for="nama_lengkap">Nama Lengkap</label>

@@ -18,14 +18,13 @@ class Register extends CI_Controller {
     {
         $username = $this->input->post("username");
         $password = $this->input->post("password");
-        $email = $this->input->post("email");
         $re_password = $this->input->post("re_password");
         $id_user_level = 1;
-        $id = md5($username.$email.$password);
+        $id = md5($username.$password);
 
         if($password == $re_password)
         {
-            $hasil = $this->m_user->pendaftaran_user($id, $username, $email, $password, $id_user_level);
+            $hasil = $this->m_user->pendaftaran_user($id, $username, $password, $id_user_level);
 
             if($hasil==false){
                 $this->session->set_flashdata('eror','eror');

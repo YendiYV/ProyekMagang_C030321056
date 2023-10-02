@@ -48,11 +48,11 @@ class M_user extends CI_Model
         
     }
     
-    public function pendaftaran_user($id, $username, $email, $password, $id_user_level)
+    public function pendaftaran_user($id, $username, $password, $id_user_level)
     {
        $this->db->trans_start();
 
-       $this->db->query("INSERT INTO user(id_user,username,password,email,id_user_level, id_user_detail) VALUES ('$id','$username','$password','$email','$id_user_level','$id')");
+       $this->db->query("INSERT INTO user(id_user,username,password,id_user_level, id_user_detail) VALUES ('$id','$username','$password','$id_user_level','$id')");
        $this->db->query("INSERT INTO user_detail(id_user_detail) VALUES ('$id')");
 
        $this->db->trans_complete();
@@ -62,47 +62,58 @@ class M_user extends CI_Model
             return false;
     }
 
-    public function update_user_detail($id, $nama_lengkap, $id_jenis_kelamin, $no_telp, $alamat, $nip, $pangkat, $jabatan)
+    public function update_user_detail($id, $nama_lengkap, $id_jenis_kelamin, $no_telp, $alamat, $nip, $jabatan, $proyek)
     {
-       $this->db->trans_start();
+        $this->db->trans_start();
+    
+        $this->db->query("UP DATE user_detail SET nama_lengkap='$nama_lengkap', id_jenis_kelamin='$id_jenis_kelamin', no_telp='$no_telp', alamat='$alamat', nip='$nip', jabatan='$jabatan', proyek='$proyek' WHERE id_user_detail='$id'");
+    
+        $this->db->trans_complete();
+    
+        if ($this->db->trans_status() == true)
+            return true;
+        else
+            return false;
+    }
+    
 
-       
-       $this->db->query("UPDATE user_detail SET nama_lengkap='$nama_lengkap', id_jenis_kelamin='$id_jenis_kelamin' ,no_telp='$no_telp', alamat='$alamat', nip='$nip', pangkat='$pangkat', jabatan='$jabatan' WHERE id_user_detail='$id'");
+    public function insert_operator($id, $username, $password, $id_user_level, $nama_lengkap, $id_jenis_kelamin, $no_telp, $alamat, $jabatan)
+    {
+        $this->db->trans_start();
 
-       $this->db->trans_complete();
-        if($this->db->trans_status()==true)
+        // Insert data ke tabel 'user'
+        $this->db->query("INSERT INTO user(id_user, username, password, id_user_level, id_user_detail) VALUES ('$id', '$username', '$password', '$id_user_level', '$id')");
+
+        // Insert data ke tabel 'user_detail' termasuk jabatan
+        $this->db->query("INSERT INTO user_detail(id_user_detail, nama_lengkap, id_jenis_kelamin, no_telp, alamat, nip, jabatan) VALUES ('$id', '$nama_lengkap', '$id_jenis_kelamin', '$no_telp', '$alamat', '$username', '$jabatan')");
+
+        $this->db->trans_complete();
+
+        if ($this->db->trans_status() == true)
             return true;
         else
             return false;
     }
 
-    public function insert_operator($id, $username, $email, $password, $id_user_level, $nama_lengkap, $id_jenis_kelamin, $no_telp, $alamat)
-    {
-       $this->db->trans_start();
 
-       $this->db->query("INSERT INTO user(id_user,username,password,email,id_user_level, id_user_detail) VALUES ('$id','$username','$password','$email','$id_user_level','$id')");
-       $this->db->query("INSERT INTO user_detail(id_user_detail, nama_lengkap, id_jenis_kelamin, no_telp, alamat) VALUES ('$id','$nama_lengkap','$id_jenis_kelamin','$no_telp','$alamat')");
+    public function update_operator($id_user, $username, $password, $id_user_level, $nama_lengkap, $id_jenis_kelamin, $no_telp, $alamat, $jabatan, $proyek) {
+        $this->db->trans_start();
 
-       $this->db->trans_complete();
-        if($this->db->trans_status()==true)
+        // Update user information in the 'user' table
+        $this->db->query("UPDATE user SET username='$username', password='$password', id_user_level='$id_user_level' WHERE id_user='$id_user'");
+
+        // Update user information including 'jabatan' and 'proyek' in the 'user_detail' table
+        $this->db->query("UPDATE user_detail SET nama_lengkap='$nama_lengkap', id_jenis_kelamin='$id_jenis_kelamin', no_telp='$no_telp', alamat='$alamat', jabatan='$jabatan', proyek='$proyek' WHERE id_user_detail='$id_user'");
+
+        $this->db->trans_complete();
+
+        if ($this->db->trans_status() == true) {
             return true;
-        else
+        } else {
             return false;
+        }
     }
 
-    public function update_operator($id, $username, $email, $password, $id_user_level, $nama_lengkap, $id_jenis_kelamin, $no_telp, $alamat)
-    {
-       $this->db->trans_start();
-
-       $this->db->query("UPDATE user SET username='$username', password='$password', email='$email', id_user_level='$id_user_level' WHERE id_user='$id'");
-       $this->db->query("UPDATE user_detail SET nama_lengkap='$nama_lengkap', id_jenis_kelamin='$id_jenis_kelamin' ,no_telp='$no_telp', alamat='$alamat' WHERE id_user_detail='$id'");
-
-       $this->db->trans_complete();
-        if($this->db->trans_status()==true)
-            return true;
-        else
-            return false;
-    }
 
     public function delete_operator($id)
     {

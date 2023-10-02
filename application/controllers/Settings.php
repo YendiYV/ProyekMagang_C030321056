@@ -40,7 +40,7 @@ class Settings extends CI_Controller {
 		$alamat = $this->input->post("alamat");
 		$id_jenis_kelamin = $this->input->post("id_jenis_kelamin");
 		$nip = $this->input->post("nip");
-		$pangkat = $this->input->post("pangkat");
+
 		$jabatan = $this->input->post("jabatan");
 
 		

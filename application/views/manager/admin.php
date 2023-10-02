@@ -138,13 +138,11 @@
                                             $id_user = $i['id_user'];
                                             $username = $i['username'];
                                             $password = $i['password'];
-                                            $email = $i['email'];
 
                                         ?>
                                             <tr>
                                                 <td><?=$no?></td>
                                                 <td><?=$username?></td>
-                                                <td><?=$email?></td>
                                                 <td>Admin</td>
                                                 <td>
                                                     <div class="table-responsive">
@@ -232,13 +230,6 @@
                                                                         id="password" aria-describedby="password"
                                                                         name="password" value="<?=$password?>">
                                                                 </div>
-                                                                <div class="form-group">
-                                                                    <label for="email">Email</label>
-                                                                    <input type="text" class="form-control" id="email"
-                                                                        aria-describedby="email" name="email"
-                                                                        value="<?=$email?>">
-                                                                </div>
-
                                                                 <button type="submit"
                                                                     class="btn btn-primary">Submit</button>
                                                             </form>
@@ -284,12 +275,6 @@
                                     <input type="text" class="form-control" id="password" aria-describedby="password"
                                         name="password">
                                 </div>
-                                <div class="form-group">
-                                    <label for="email">Email</label>
-                                    <input type="text" class="form-control" id="email" aria-describedby="email"
-                                        name="email">
-                                </div>
-
                                 <button type="submit" class="btn btn-primary">Submit</button>
                             </form>
                         </div>
