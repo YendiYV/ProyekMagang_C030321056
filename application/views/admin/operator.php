@@ -350,27 +350,9 @@
                                 <div class="form-group">
                                     <label for="username">NIP</label>
                                     <input type="text" class="form-control" id="username" aria-describedby="username"
-                                        name="username" required pattern="[0-9]{1,18}">
-                                    <small class="text-muted">Harus berupa angka dan tidak lebih dari 18 karakter.</small>
+                                        name="username" required pattern="[A-Z0-9]{10}">
+                                    <small class="text-muted">NIP harus terdiri dari 10 karakter yang merupakan kombinasi angka dan huruf besar (A-Z).</small>
                                 </div>
-                                <script>
-                                    // Fungsi JavaScript untuk membatasi input hanya berisi angka dan tidak lebih dari 18 digit
-                                    document.getElementById("username").addEventListener("input", function () {
-                                        // Menghapus karakter selain angka
-                                        this.value = this.value.replace(/\D/g, '');
-
-                                        // Memastikan panjang input tidak lebih dari 18 digit
-                                        if (this.value.length > 18) {
-                                            document.getElementById("usernameError").textContent = "NIP tidak boleh lebih dari 18 angka.";
-                                            this.value = this.value.slice(0, 18);
-                                        }else {
-                                            document.getElementById("usernameError").textContent = "";
-                                            input.setCustomValidity("");
-                                            }
-                                    });
-                                </script>
-
-
 
                                 <div class="form-group">
                                     <label for="password">Password</label>
@@ -381,7 +363,10 @@
 
                                 <div class="form-group">
                                     <label for="confirm_password">Konfirmasi Password</label>
-                                    <input type="password" class="form-control" id="confirm_password" name="confirm_password" required>
+                                    <div class="input-group">
+                                        <input type="password" class="form-control" id="confirm_password" aria-describedby="confirm_password" name="confirm_password" required>
+                                    </div>
+                                    <small id="password_error" class="form-text text-danger"></small>
                                 </div>
                                 <div class="form-group">
                                     <label for="nama_lengkap">Nama Lengkap</label>

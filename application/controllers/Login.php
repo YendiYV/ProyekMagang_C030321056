@@ -21,70 +21,70 @@ class Login extends CI_Controller {
 		$username = $this->input->post("username");
 		$password = $this->input->post("password");
 
+		// Melakukan pencarian pengguna berdasarkan username
 		$user = $this->m_user->cek_login($username);
 
-		if($user->num_rows()>0){
+		if ($user->num_rows() > 0) {
 			$user = $user->row_array();
 
-			if($user['password'] == $password){
+			// Membandingkan kata sandi yang dimasukkan oleh pengguna dengan kata sandi di database
+			if ($user['password'] == md5($password)) { // Menggunakan md5() untuk membandingkan kata sandi
 
-				if($user['id_user_level'] == 1){
-
+				// Berdasarkan tingkat pengguna (id_user_level), sesi pengguna akan diatur
+				if ($user['id_user_level'] == 1) {
+					// Jika tingkat pengguna adalah 1 (Operator), sesi diatur untuk Operator
 					$this->session->set_userdata('logged_in', true);
 					$this->session->set_userdata('id_user', $user['id_user']);
 					$this->session->set_userdata('username', $user['username']);
 					$this->session->set_userdata('id_user_level', $user['id_user_level']);
 					$this->session->set_userdata('nama_lengkap', $user['nama_lengkap']);
-					
-					$this->session->set_flashdata('success_login','success_login');
+
+					$this->session->set_flashdata('success_login', 'success_login');
 					redirect('Dashboard/dashboard_operator');
-	
-				}else if($user['id_user_level'] == 2){
-	
+				} else if ($user['id_user_level'] == 2) {
+					// Jika tingkat pengguna adalah 2 (Admin), sesi diatur untuk Admin
 					$this->session->set_userdata('logged_in', true);
 					$this->session->set_userdata('id_user', $user['id_user']);
 					$this->session->set_userdata('username', $user['username']);
 					$this->session->set_userdata('id_user_level', $user['id_user_level']);
-	
-					$this->session->set_flashdata('success_login','success_login');
+
+					$this->session->set_flashdata('success_login', 'success_login');
 					redirect('Dashboard/dashboard_admin');
-	
-				}else if($user['id_user_level'] == 3){
-	
+				} else if ($user['id_user_level'] == 3) {
+					// Jika tingkat pengguna adalah 3 (Super Admin), sesi diatur untuk Super Admin
 					$this->session->set_userdata('logged_in', true);
 					$this->session->set_userdata('id_user', $user['id_user']);
 					$this->session->set_userdata('username', $user['username']);
 					$this->session->set_userdata('id_user_level', $user['id_user_level']);
-	
-					$this->session->set_flashdata('success_login','success_login');
+
+					$this->session->set_flashdata('success_login', 'success_login');
 					redirect('Dashboard/dashboard_super_admin');
-	
-				}else if($user['id_user_level'] == 4){
-	
+				} else if ($user['id_user_level'] == 4) {
+					// Jika tingkat pengguna adalah 4 (Manager), sesi diatur untuk Manager
 					$this->session->set_userdata('logged_in', true);
 					$this->session->set_userdata('id_user', $user['id_user']);
 					$this->session->set_userdata('username', $user['username']);
 					$this->session->set_userdata('id_user_level', $user['id_user_level']);
-	
-					$this->session->set_flashdata('success_login','success_login');
+
+					$this->session->set_flashdata('success_login', 'success_login');
 					redirect('Dashboard/dashboard_manager');
-				}else{
-					$this->session->set_flashdata('loggin_err','loggin_err');
+				} else {
+					// Jika tingkat pengguna tidak sesuai dengan yang diharapkan
+					$this->session->set_flashdata('loggin_err', 'loggin_err');
 					redirect('Login/index');
 				}
-
-			}else{
-
-			$this->session->set_flashdata('loggin_err_pass','loggin_err_pass');
-			redirect('Login/index');
-
+			} else {
+				// Jika kata sandi yang dimasukkan tidak cocok dengan yang ada di database
+				$this->session->set_flashdata('loggin_err_pass', 'loggin_err_pass');
+				redirect('Login/index');
 			}
-		}else{
-			$this->session->set_flashdata('loggin_err_no_user','loggin_err_no_user');
+		} else {
+			// Jika pengguna dengan username yang dimasukkan tidak ditemukan
+			$this->session->set_flashdata('loggin_err_no_user', 'loggin_err_no_user');
 			redirect('Login/index');
 		}
-		
 	}
+
 
 
 

@@ -116,21 +116,24 @@ class M_cuti extends CI_Model
     
         // Loop melalui hasil query untuk menghitung durasi cuti
         foreach ($query->result() as $row) {
-            $mulai = strtotime($row->mulai);
-            $berakhir = strtotime($row->berakhir);
+            if ($row->id_status_cuti1 == 2 && $row->id_status_cuti2 == 2 && $row->id_status_cuti3 == 2) {
+                $mulai = strtotime($row->mulai);
+                $berakhir = strtotime($row->berakhir);
     
-            // Pemeriksaan untuk hari Sabtu dan Minggu (akhir pekan)
-            while ($mulai <= $berakhir) {
-                // Memeriksa apakah hari ini bukan Sabtu (6) atau Minggu (0)
-                if (date("N", $mulai) != 6 && date("N", $mulai) != 7) {
-                    $total_hari_cuti++;
+                // Pemeriksaan untuk hari Sabtu dan Minggu (akhir pekan)
+                while ($mulai <= $berakhir) {
+                    // Memeriksa apakah hari ini bukan Sabtu (6) atau Minggu (0)
+                    if (date("N", $mulai) != 6 && date("N", $mulai) != 7) {
+                        $total_hari_cuti++;
+                    }
+                    $mulai = strtotime("+1 day", $mulai);
                 }
-                $mulai = strtotime("+1 day", $mulai);
             }
         }
     
         return $total_hari_cuti;
     }
+    
     
 
     

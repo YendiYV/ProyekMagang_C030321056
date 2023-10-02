@@ -139,7 +139,6 @@
     // Set batasan tanggal minimum pada input tanggal "Berakhir Cuti"
     berakhirInput.setAttribute("min", tomorrow);
 </script>
-Dengan kode di atas, Anda akan memiliki input "Berakhir Cuti" yang hanya memungkinkan pengguna untuk memilih tanggal besok atau setelahnya, mirip dengan input "Mulai Cuti."
 
 
 
