@@ -27,7 +27,7 @@
                 <div class="container-fluid">
                     <div class="row mb-2">
                         <div class="col-sm-6">
-                            <h1 class="m-0">Dashboard | Repost by <a href='https://web.facebook.com/YendiYV' title='Yendi YV' target='_blank'>Yendi YV</a>
+                            <h1 class="m-0">Dashboard Manager</a>
                         </div><!-- /.col -->
                         <div class="col-sm-6">
                             <ol class="breadcrumb float-sm-right">

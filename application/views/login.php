@@ -2,7 +2,7 @@
 <html lang="en">
 
 <head>
-    <title>WEB-PGAC | UP2T</title>
+    <title>WEB-SMP2C</title>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <!--===============================================================================================-->
@@ -108,8 +108,7 @@
 
                 <form class="login100-form validate-form" action="<?= base_url();?>Login/proses" method="POST">
                     <span class="login100-form-title">
-                        Aplikasi PGAC
-						<center><p>Repost by <b>Yendi YV</b></p></center>
+                        Aplikasi SMP2C
                     </span>
 					
 

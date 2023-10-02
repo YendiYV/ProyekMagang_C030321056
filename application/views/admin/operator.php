@@ -251,7 +251,7 @@
                                                                 </script>
                                                                 <div class="form-group">
                                                                     <label for="password">Password</label>
-                                                                    <input type="text" class="form-control"
+                                                                    <input type="password" class="form-control"
                                                                         id="password" aria-describedby="password"
                                                                         name="password" value="<?= $password ?>" required>
                                                                 </div>

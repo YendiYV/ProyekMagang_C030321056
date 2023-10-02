@@ -34,13 +34,6 @@
     </script>
     <?php } ?>
     <?php if ($this->session->flashdata('input')){ ?>
-    <script>
-    swal({
-        title: "Success!",
-        text: "Data Berhasil Dilengkapi!",
-        icon: "success"
-    });
-    </script>
     <?php } ?>
 
     <?php if ($this->session->flashdata('eror')){ ?>

@@ -28,7 +28,7 @@
                 <div class="container-fluid">
                     <div class="row mb-2">
                         <div class="col-sm-6">
-                            <h1 class="m-0">Dashboard | Repost by <a href='https://stokcoding.com/' title='StokCoding.com' target='_blank'>StokCoding.com</a>
+                            <h1 class="m-0">Dashboard Admin</a>
 							</h1>
                         </div><!-- /.col -->
                         <div class="col-sm-6">

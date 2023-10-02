@@ -145,13 +145,13 @@ class M_cuti extends CI_Model
 
     public function count_all_cuti_acc()
     {
-        $hasil = $this->db->query('SELECT COUNT(id_cuti) as total_cuti FROM cuti JOIN user ON cuti.id_user = user.id_user JOIN user_detail ON user.id_user_detail = user_detail.id_user_detail WHERE id_status_cuti2=2');
+        $hasil = $this->db->query('SELECT COUNT(id_cuti) as total_cuti FROM cuti JOIN user ON cuti.id_user = user.id_user JOIN user_detail ON user.id_user_detail = user_detail.id_user_detail WHERE id_status_cuti1=2 AND id_status_cuti2=2 AND id_status_cuti3=2');
         return $hasil;
     }
 
     public function count_all_cuti_acc_by_id($id_user)
     {
-        $hasil = $this->db->query("SELECT COUNT(id_cuti) as total_cuti FROM cuti JOIN user ON cuti.id_user = user.id_user JOIN user_detail ON user.id_user_detail = user_detail.id_user_detail WHERE id_status_cuti2=2 AND cuti.id_user='$id_user'");
+        $hasil = $this->db->query("SELECT COUNT(id_cuti) as total_cuti FROM cuti JOIN user ON cuti.id_user = user.id_user JOIN user_detail ON user.id_user_detail = user_detail.id_user_detail WHERE id_status_cuti1=2 AND id_status_cuti2=2 AND id_status_cuti3=2 AND cuti.id_user='$id_user'");
         return $hasil;
     }
 
@@ -169,7 +169,7 @@ class M_cuti extends CI_Model
 
     public function count_all_cuti_reject()
     {
-        $hasil = $this->db->query('SELECT COUNT(id_cuti) as total_cuti FROM cuti JOIN user ON cuti.id_user = user.id_user JOIN user_detail ON user.id_user_detail = user_detail.id_user_detail WHERE id_status_cuti2=3');
+        $hasil = $this->db->query('SELECT COUNT(id_cuti) as total_cuti FROM cuti JOIN user ON cuti.id_user = user.id_user JOIN user_detail ON user.id_user_detail = user_detail.id_user_detail WHERE id_status_cuti1=3 OR id_status_cuti2=3 OR id_status_cuti3=3');
         return $hasil;
     }
 
