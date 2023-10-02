@@ -121,7 +121,7 @@
                                 <!-- /.card-header -->
                                 <div class="card-body">
                                     <table id="example1" class="table table-bordered table-striped">
-                                        <thead>
+                                    <thead>
                                             <tr>
                                                 <th>No</th>
                                                 <th>NIP</th>
@@ -129,6 +129,8 @@
                                                 <th>Jenis Kelamin</th>
                                                 <th>No Telp</th>
                                                 <th>Alamat</th>
+                                                <th>Proyek</th>
+                                                <th>Jabatan</th>
                                                 <th>Aksi</th>
                                             </tr>
                                         </thead>
@@ -146,6 +148,8 @@
                                             $id_jenis_kelamin = $i['id_jenis_kelamin'];
                                             $no_telp = $i['no_telp'];
                                             $alamat = $i['alamat'];
+                                            $proyek = $i['proyek'];
+                                            $jabatan = $i['jabatan'];
 
                                             ?>
                                             <tr>
@@ -155,6 +159,8 @@
                                                 <td><?= $jenis_kelamin ?></td>
                                                 <td><?= $no_telp ?></td>
                                                 <td><?= $alamat ?></td>
+                                                <td><?= $proyek ?></td>
+                                                <td><?= $jabatan ?></td>
                                                 <td>
                                                     <div class="table-responsive">
                                                         <div class="table table-striped table-hover ">

@@ -93,7 +93,7 @@
                         <div class="col-sm-6">
                             <ol class="breadcrumb float-sm-right">
                                 <li class="breadcrumb-item"><a href="#">Home</a></li>
-                                <li class="breadcrumb-item active">operator</li>
+                                <li class="breadcrumb-item active">Operator</li>
                             </ol>
                         </div><!-- /.col -->
                         <!-- <button type="button" class="btn btn-primary mt-3" data-toggle="modal"
@@ -123,11 +123,13 @@
                                         <thead>
                                             <tr>
                                                 <th>No</th>
-                                                <th>Username</th>
+                                                <th>NIP</th>
                                                 <th>Nama Lengkap</th>
                                                 <th>Jenis Kelamin</th>
                                                 <th>No Telp</th>
                                                 <th>Alamat</th>
+                                                <th>Proyek</th>
+                                                <th>Jabatan</th>
                                                 <!-- <th>Aksi</th> -->
                                             </tr>
                                         </thead>
@@ -145,6 +147,8 @@
                                             $id_jenis_kelamin = $i['id_jenis_kelamin'];
                                             $no_telp = $i['no_telp'];
                                             $alamat = $i['alamat'];
+                                            $proyek = $i['proyek'];
+                                            $jabatan = $i['jabatan'];
 
                                             ?>
                                             <tr>
@@ -154,6 +158,8 @@
                                                 <td><?= $jenis_kelamin ?></td>
                                                 <td><?= $no_telp ?></td>
                                                 <td><?= $alamat ?></td>
+                                                <td><?= $proyek ?></td>
+                                                <td><?= $jabatan ?></td>
                                                 <!-- <td>
                                                     <div class="table-responsive">
                                                         <div class="table table-striped table-hover ">

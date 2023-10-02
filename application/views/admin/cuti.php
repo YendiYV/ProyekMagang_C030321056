@@ -248,15 +248,9 @@
                                                     <?php }?>
                                                 </td>
                                                 <td>
-                                                    <?php if ($id_status_cuti1 == 2 && $id_status_cuti2 == 2) { ?>
-                                                        <a href="<?= base_url(); ?>Cetak/surat_cuti_pdf/<?= $id_cuti ?>" target="_blank" class="btn btn-info">
-                                                            Cetak Surat Pengajuan
-                                                        </a>
-                                                    <?php } else { ?>
-                                                        <a href="" class="btn btn-danger">
-                                                            Belum Dapat Mencetak
-                                                        </a>
-                                                    <?php } ?>
+                                                    <a href="<?= base_url(); ?>Cetak/surat_cuti_pdf/<?= $id_cuti ?>" target="_blank" class="btn btn-info">
+                                                        Cetak Surat Pengajuan
+                                                    </a>
                                                 </td>
                                                 <td>
                                                     <?php if ($id_status_cuti1 == 2 && $id_status_cuti2 == 2 && $id_status_cuti3 == 2) { ?>

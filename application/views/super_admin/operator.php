@@ -120,14 +120,16 @@
                                 <div class="card-body">
 
                                     <table id="example1" class="table table-bordered table-striped">
-                                        <thead>
+                                    <thead>
                                             <tr>
                                                 <th>No</th>
-                                                <th>Username</th>
+                                                <th>NIP</th>
                                                 <th>Nama Lengkap</th>
                                                 <th>Jenis Kelamin</th>
                                                 <th>No Telp</th>
                                                 <th>Alamat</th>
+                                                <th>Proyek</th>
+                                                <th>Jabatan</th>
                                                 <!-- <th>Aksi</th> -->
                                             </tr>
                                         </thead>
@@ -144,8 +146,9 @@
                                             $jenis_kelamin = $i['jenis_kelamin'];
                                             $id_jenis_kelamin = $i['id_jenis_kelamin'];
                                             $no_telp = $i['no_telp'];
-                                            $email = $i['email'];
                                             $alamat = $i['alamat'];
+                                            $proyek = $i['proyek'];
+                                            $jabatan = $i['jabatan'];
 
                                             ?>
                                             <tr>
@@ -155,24 +158,8 @@
                                                 <td><?= $jenis_kelamin ?></td>
                                                 <td><?= $no_telp ?></td>
                                                 <td><?= $alamat ?></td>
-                                                <!-- <td>
-                                                    <div class="table-responsive">
-                                                        <div class="table table-striped table-hover ">
-                                                            <a href="" class="btn btn-primary" data-toggle="modal"
-                                                                data-target="#edit_data_operator<?=$id_user?>">
-                                                                <i class="fas fa-edit"></i>
-                                                            </a>
-                                                        </div>
-                                                    </div>
-                                                    <div class="table-responsive">
-                                                        <div class="table table-striped table-hover ">
-                                                            <a href="" data-toggle="modal"
-                                                                data-target="#hapus<?=$id_user?>"
-                                                                class="btn btn-danger"><i class="fas fa-trash"></i>
-                                                            </a>
-                                                        </div>
-                                                    </div>
-                                                </td> -->
+                                                <td><?= $proyek ?></td>
+                                                <td><?= $jabatan ?></td>
                                             </tr>
                                             <!-- Modal Hapus Data operator -->
                                             <div class="modal fade" id="hapus<?= $id_user ?>" tabindex="-1"
