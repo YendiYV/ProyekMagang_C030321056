@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Waktu pembuatan: 02 Okt 2023 pada 06.08
+-- Waktu pembuatan: 03 Okt 2023 pada 02.51
 -- Versi server: 10.4.24-MariaDB
 -- Versi PHP: 8.1.6
 
@@ -45,10 +45,10 @@ CREATE TABLE `cuti` (
 --
 
 INSERT INTO `cuti` (`id_cuti`, `id_user`, `alasan`, `tgl_diajukan`, `mulai`, `berakhir`, `id_status_cuti1`, `id_status_cuti2`, `id_status_cuti3`, `perihal_cuti`) VALUES
-('4533-SP-Cuti-2023', 'dce802a5e29e9ccabc144dfb6a37abbb', 'tes', '2023-10-02', '2023-10-03', '2023-10-11', 2, 2, 2, 'Hndk banar ai'),
+('4954-SP-Cuti-2023', 'dce802a5e29e9ccabc144dfb6a37abbb', 'Sakit', '2023-10-02', '2023-10-03', '2023-10-11', 2, 2, 3, 'Sakit'),
 ('8103-SP-Cuti-2023', 'dce802a5e29e9ccabc144dfb6a37abbb', 'tse', '2023-10-02', '2023-10-27', '2023-10-28', 1, 1, 1, 'test'),
 ('8880-SP-Cuti-2023', 'c551fc8847d29dc25a23db5d2cdb941b', 'berkunjung RS untuk pengecekan organ dalam', '2023-10-02', '2023-10-03', '2023-10-09', 2, 2, 2, 'Kunjungan RS'),
-('9999-SP-Cuti-2023', 'dce802a5e29e9ccabc144dfb6a37abbb', 'Sakit Jiwa Karena Kerja Tros', '2023-09-29', '2023-09-30', '2023-10-06', 2, 2, 2, 'Sakit');
+('9519-SP-Cuti-2023', 'dce802a5e29e9ccabc144dfb6a37abbb', 'ee', '2023-10-02', '2023-10-20', '2023-10-23', 2, 2, 2, 'ee');
 
 -- --------------------------------------------------------
 
@@ -109,11 +109,11 @@ CREATE TABLE `user` (
 
 INSERT INTO `user` (`id_user`, `username`, `password`, `id_user_level`, `id_user_detail`) VALUES
 ('134e349e4f50a051d8ca3687d6a7de1a', '9014050BJM', '202cb962ac59075b964b07152d234b70', 2, '134e349e4f50a051d8ca3687d6a7de1a'),
-('c551fc8847d29dc25a23db5d2cdb941b', '209090PKY', '202cb962ac59075b964b07152d234b70', 1, 'c551fc8847d29dc25a23db5d2cdb941b'),
-('dce802a5e29e9ccabc144dfb6a37abbb', '209091PKY', '202cb962ac59075b964b07152d234b70', 1, 'dce802a5e29e9ccabc144dfb6a37abbb'),
-('eb71208764d1a8a02cdf86a49ccd1489', 'manajer', '202cb962ac59075b964b07152d234b70', 4, 'eb71208764d1a8a02cdf86a49ccd1489'),
+('c551fc8847d29dc25a23db5d2cdb941b', '2090901PKY', '202cb962ac59075b964b07152d234b70', 1, 'c551fc8847d29dc25a23db5d2cdb941b'),
+('dce802a5e29e9ccabc144dfb6a37abbb', '2090902PKY', '202cb962ac59075b964b07152d234b70', 1, 'dce802a5e29e9ccabc144dfb6a37abbb'),
+('eb71208764d1a8a02cdf86a49ccd1489', '1212121MNJ', '202cb962ac59075b964b07152d234b70', 4, 'eb71208764d1a8a02cdf86a49ccd1489'),
 ('f5972fbf4ef53843c1e12c3ae99e5005', 'supervisio', '202cb962ac59075b964b07152d234b70', 3, 'f5972fbf4ef53843c1e12c3ae99e5005'),
-('f7c7b7e19a4ed7a51db593c8efbee984', '209092PKY', '827ccb0eea8a706c4c34a16891f84e7b', 1, 'f7c7b7e19a4ed7a51db593c8efbee984');
+('f7c7b7e19a4ed7a51db593c8efbee984', '2090903PKY', '827ccb0eea8a706c4c34a16891f84e7b', 1, 'f7c7b7e19a4ed7a51db593c8efbee984');
 
 -- --------------------------------------------------------
 

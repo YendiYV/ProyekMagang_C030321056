@@ -66,6 +66,7 @@ class operator extends CI_Controller {
 		if ($this->session->userdata('logged_in') == true AND $this->session->userdata('id_user_level') == 2) {
 			$username = $this->input->post("username");
 			$password = md5($this->input->post("password"));
+			$re_password = $this->input->post("confirm_password");
 			$nama_lengkap = $this->input->post("nama_lengkap");
 			$id_jenis_kelamin = $this->input->post("id_jenis_kelamin");
 			$no_telp = $this->input->post("no_telp");
@@ -74,14 +75,18 @@ class operator extends CI_Controller {
 			$jabatan = $this->input->post("jabatan"); // Menambahkan jabatan ke dalam parameter
 
 			$id = md5($username.$password);
+			if ($password == $re_password) {
+				$hasil = $this->m_user->insert_operator($id, $username, $password, $id_user_level, $nama_lengkap, $id_jenis_kelamin, $no_telp, $alamat, $jabatan); // Memasukkan jabatan sebagai argumen
 
-			$hasil = $this->m_user->insert_operator($id, $username, $password, $id_user_level, $nama_lengkap, $id_jenis_kelamin, $no_telp, $alamat, $jabatan); // Memasukkan jabatan sebagai argumen
-
-			if ($hasil == false) {
-				$this->session->set_flashdata('eror', 'eror');
-				redirect('operator/view_admin');
-			} else {
-				$this->session->set_flashdata('input', 'input');
+				if ($hasil == false) {
+					$this->session->set_flashdata('eror', 'eror');
+					redirect('operator/view_admin');
+				} else {
+					$this->session->set_flashdata('input', 'input');
+					redirect('operator/view_admin');
+				}
+			}else {
+				$this->session->set_flashdata('password_err', 'password_err');
 				redirect('operator/view_admin');
 			}
 
@@ -151,33 +156,39 @@ class operator extends CI_Controller {
 
 	public function super_admin_tambah_operator()
 	{
-	if ($this->session->userdata('logged_in') == true AND $this->session->userdata('id_user_level') == 3) {
-		$username = $this->input->post("username");
-        $password = $this->input->post("password");
-		$nama_lengkap = $this->input->post("nama_lengkap");
-		$id_jenis_kelamin = $this->input->post("id_jenis_kelamin");
-		$no_telp = $this->input->post("no_telp");
-		$alamat = $this->input->post("alamat");
-		$id_user_level = 1;
-        $id = md5($username.$password);
+		if ($this->session->userdata('logged_in') == true AND $this->session->userdata('id_user_level') == 2) {
+			$username = $this->input->post("username");
+			$password = md5($this->input->post("password"));
+			$re_password = $this->input->post("confirm_password");
+			$nama_lengkap = $this->input->post("nama_lengkap");
+			$id_jenis_kelamin = $this->input->post("id_jenis_kelamin");
+			$no_telp = $this->input->post("no_telp");
+			$alamat = $this->input->post("alamat");
+			$id_user_level = 1;
+			$jabatan = $this->input->post("jabatan"); // Menambahkan jabatan ke dalam parameter
 
-        
-            $hasil = $this->m_user->insert_operator($id, $username, $password, $id_user_level, $nama_lengkap, $id_jenis_kelamin, $no_telp, $alamat);
+			$id = md5($username.$password);
+			if ($password == $re_password) {
+				$hasil = $this->m_user->insert_operator($id, $username, $password, $id_user_level, $nama_lengkap, $id_jenis_kelamin, $no_telp, $alamat, $jabatan); // Memasukkan jabatan sebagai argumen
 
-            if($hasil==false){
-                $this->session->set_flashdata('eror','eror');
-                redirect('operator/view_super_admin');
-			}else{
-				$this->session->set_flashdata('input','input');
+				if ($hasil == false) {
+					$this->session->set_flashdata('eror', 'eror');
+					redirect('operator/view_super_admin');
+				} else {
+					$this->session->set_flashdata('input', 'input');
+					redirect('operator/view_super_admin');
+				}
+			}else {
+				$this->session->set_flashdata('password_err', 'password_err');
 				redirect('operator/view_super_admin');
-            }
-		}else{
+			}
 
-			$this->session->set_flashdata('loggin_err','loggin_err');
+		} else {
+
+			$this->session->set_flashdata('loggin_err', 'loggin_err');
 			redirect('Login/index');
-	
+
 		}
-     
 	}
 
 	public function super_admin_edit_operator()

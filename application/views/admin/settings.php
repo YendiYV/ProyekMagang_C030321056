@@ -73,11 +73,6 @@
                 <div class="container-fluid">
                     <form action="<?=base_url();?>Settings/settings_account_admin" method="POST">
                         <div class="form-group">
-                            <label for="username">Username</label>
-                            <input type="text" class="form-control" id="username" name="username"
-                                aria-describedby="Username" required>
-                        </div>
-                        <div class="form-group">
                             <label for="password">Password</label>
                             <input type="password" class="form-control" id="password" name="password"
                                 aria-describedby="password" required>
